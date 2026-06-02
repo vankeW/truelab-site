@@ -367,6 +367,168 @@ footer a:hover { color:var(--ink); }
   .tryit-step .num { display:none; }
 }
 
+
+/* ───── MOBILE TIGHTEN (≤640px) ───── */
+@media (max-width:640px) {
+  /* Topbar — keep brand + LIVE pill from breaking */
+  .topbar-inner { padding:12px 16px; }
+  .brand img { height:24px; }
+  .live-pill { font-size:10px; padding:2px 7px; margin-left:8px; }
+  .nav { display:none; }
+
+  /* Hero */
+  .hero { padding:56px 18px 64px; }
+  .hero-grid { grid-template-columns:1fr; gap:32px; }
+  .hero-left .badge-line { font-size:11px; padding:5px 11px; line-height:1.45; }
+  .hero-left h1 { font-size:38px; letter-spacing:-1.2px; line-height:1.05; margin-bottom:18px; }
+  .hero-left h1 .strike::after { height:4px; top:55%; }
+  .hero-left h1 .accent { padding:0 10px; border-radius:6px; }
+  .hero-left .subhead { font-size:15px; line-height:1.55; margin-bottom:24px; }
+  .cta-row { gap:10px; }
+  .btn { padding:11px 18px; font-size:13.5px; flex:1; justify-content:center; min-width:0; }
+
+  /* Hero terminal */
+  .terminal { font-size:10.5px; line-height:1.65; }
+  .terminal-bar { padding:8px 12px; }
+  .terminal-bar .dot-r,.terminal-bar .dot-y,.terminal-bar .dot-g { width:9px; height:9px; }
+  .terminal-bar .title { font-size:10px; }
+  .terminal-body { padding:14px 14px; min-height:240px; max-height:240px; }
+
+  /* Ticker */
+  .ticker { padding:11px 0; }
+  .ticker-track span { padding:0 14px; font-size:11px; }
+
+  /* Big stats — newspaper */
+  .bigstats { padding:64px 18px; }
+  .bigstats .eyebrow { font-size:11px; letter-spacing:1.5px; margin-bottom:18px; }
+  .bigstats h2 { font-size:34px; letter-spacing:-1px; line-height:1.1; margin-bottom:40px; }
+  .bigstats h2 .underline { border-bottom-width:4px; }
+  .stats-row { grid-template-columns:1fr; }
+  .stats-cell { padding:32px 22px; border-right:none; border-bottom:1px solid var(--grey-200); }
+  .stats-cell:last-child { border-bottom:none; }
+  .stats-cell .num { font-size:60px; letter-spacing:-2px; margin-bottom:12px; }
+  .stats-cell .label { font-size:14px; max-width:none; }
+
+  /* Receipts wall — disable rotation on phones, single column */
+  .receipts-band { padding:64px 18px; }
+  .receipts-band h2 { font-size:32px; letter-spacing:-1px; }
+  .receipts-band .lede { font-size:15px; margin-bottom:36px; }
+  .receipts-grid { grid-template-columns:1fr; gap:20px; }
+  .receipt,
+  .receipt:nth-child(2),
+  .receipt:nth-child(3),
+  .receipt:nth-child(4),
+  .receipt:nth-child(5),
+  .receipt:nth-child(6) { transform:rotate(0); }
+  .receipt:hover { transform:rotate(0) translateY(-2px); }
+  .receipt { padding:22px 20px; font-size:11.5px; }
+  .receipt .head .biz { font-size:13px; letter-spacing:0.5px; }
+  .receipt .barcode { height:22px; }
+
+  /* Try-it widget */
+  .tryit { padding:64px 18px; }
+  .tryit .eyebrow { font-size:11px; letter-spacing:1.5px; margin-bottom:18px; }
+  .tryit h2 { font-size:30px; letter-spacing:-0.8px; line-height:1.1; margin-bottom:14px; }
+  .tryit .lede { font-size:15px; margin-bottom:32px; line-height:1.6; }
+
+  /* 4-step bar — wrap to 2x2 grid */
+  .tryit-bar { display:grid; grid-template-columns:1fr 1fr; gap:0; padding:0; }
+  .tryit-step { padding:11px 8px; font-size:11px; letter-spacing:0;
+    border-right:1px solid var(--grey-200); border-bottom:1px solid var(--grey-200); }
+  .tryit-step:nth-child(2n) { border-right:none; }
+  .tryit-step:nth-last-child(-n+2) { border-bottom:none; }
+  .tryit-step:last-child { border-right:none; }
+  .tryit-step .num { display:inline; opacity:0.45; margin-right:5px; }
+
+  .tryit-body { padding:24px 18px; min-height:auto; }
+  .form-grid { grid-template-columns:1fr; gap:16px; }
+  .form-row label { font-size:12px; }
+  .form-row label .hint { display:block; margin-left:0; margin-top:2px; line-height:1.4; }
+  .form-row input,.form-row select,.form-row textarea { font-size:12.5px; padding:11px 12px; }
+  .form-row .helper { font-size:11px; }
+  .form-actions { flex-direction:column; align-items:stretch; gap:10px; margin-top:24px; }
+  .form-actions .btn { width:100%; }
+  .form-actions .privacy { font-size:11px; line-height:1.5; }
+
+  /* Estimate grid */
+  .estimate-grid { grid-template-columns:1fr; }
+  .estimate-cell { padding:22px 20px; border-right:none; border-bottom:1px solid var(--grey-200); }
+  .estimate-cell:last-child { border-bottom:none; }
+  .estimate-cell .v { font-size:38px; letter-spacing:-1px; }
+  .estimate-cell .sub { font-size:12px; }
+  .estimate-breakdown { padding:18px 18px; font-size:11.5px; line-height:1.7; }
+  .estimate-breakdown .row { gap:10px; }
+
+  /* Run terminal */
+  .run-terminal-body { min-height:260px; max-height:260px; padding:14px 14px; font-size:10.5px; }
+  .run-status { font-size:11px; flex-direction:column; gap:4px; }
+
+  /* Result pane */
+  .result-hero { grid-template-columns:1fr; gap:20px; padding:20px 0; text-align:center; }
+  .score-gauge { width:140px; height:140px; margin:0 auto; }
+  .score-gauge svg { width:140px; height:140px; }
+  .score-gauge .num { font-size:48px; letter-spacing:-1.5px; }
+  .score-gauge .num .small { font-size:18px; }
+  .result-meta .target-tag { font-size:11px; padding:4px 10px; }
+  .result-meta .verdict-large { font-size:34px; letter-spacing:-1px; }
+  .result-meta .summary { font-size:14px; }
+  .dimensions-grid { grid-template-columns:1fr; }
+  .result-actions { flex-direction:column; }
+  .result-actions .btn { width:100%; }
+
+  /* How — dark band */
+  .band-dark { padding:64px 18px; }
+  .band-dark .eyebrow { font-size:11px; letter-spacing:1.5px; }
+  .band-dark h2 { font-size:30px; letter-spacing:-0.8px; line-height:1.1; }
+  .band-dark .lede { font-size:15px; margin-bottom:40px; }
+  .steps-grid { grid-template-columns:1fr; border-radius:12px; }
+  .step-cell { padding:24px 22px; border-right:none !important;
+    border-bottom:1px solid var(--grey-700) !important; }
+  .step-cell:last-child { border-bottom:none !important; }
+  .step-cell h4 { font-size:16px; }
+  .step-cell p { font-size:13.5px; }
+
+  /* Verdicts — single column on small phones */
+  section.body { padding:64px 18px; }
+  section.body h2 { font-size:30px; letter-spacing:-0.8px; }
+  section.body .lede { font-size:15px; margin-bottom:36px; }
+  .verdict-scale { grid-template-columns:1fr; border-radius:12px; }
+  .verdict-card { padding:22px 20px; border-right:none;
+    border-bottom:1px solid var(--grey-200); }
+  .verdict-card:last-child { border-bottom:none; }
+  .verdict-card .label { font-size:20px; }
+
+  /* Manifesto — stack each item vertically */
+  .manifesto { padding:64px 18px; }
+  .manifesto h2 { font-size:30px; letter-spacing:-0.8px; margin-bottom:32px; }
+  .manifesto-list li { grid-template-columns:1fr; gap:8px; padding:18px 0; font-size:18px; }
+  .manifesto-list li .reason { font-size:14px; }
+
+  /* CTA */
+  .cta-band { padding:64px 18px; }
+  .cta-band h2 { font-size:34px; letter-spacing:-1px; }
+  .cta-band p { font-size:15px; margin-bottom:26px; }
+  .cta-band .cta-row { flex-direction:column; }
+  .cta-band .btn { width:100%; }
+
+  /* Footer */
+  footer { padding:32px 18px 24px; }
+  footer .inner { flex-direction:column; align-items:flex-start; gap:14px; font-size:12px; }
+  footer .right { gap:18px; flex-wrap:wrap; }
+}
+
+/* ───── EXTRA TIGHT (≤380px) ───── */
+@media (max-width:380px) {
+  .hero-left h1 { font-size:32px; letter-spacing:-1px; }
+  .bigstats h2 { font-size:28px; }
+  .stats-cell .num { font-size:52px; }
+  .receipts-band h2,.tryit h2,.band-dark h2,section.body h2,.manifesto h2 { font-size:26px; }
+  .cta-band h2 { font-size:28px; }
+  .estimate-cell .v { font-size:32px; }
+  .result-meta .verdict-large { font-size:28px; }
+  .live-pill { display:none; }
+}
+
 </style>
 </head>
 <body>
