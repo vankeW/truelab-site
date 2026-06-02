@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrueLab · 真实验室</title>
+<title>TrueLab · 真相实验室</title>
 <meta name="description" content="独立第三方 AI 中转站测评 — 信任、真实、不造假">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="assets/mark-512.png">
@@ -637,22 +637,46 @@ footer a:hover { color:var(--ink); }
           <div class="form-row">
             <label>声称模型</label>
             <select id="f-model">
-              <option value="claude-opus-4-7">claude-opus-4-7</option>
-              <option value="claude-sonnet-4">claude-sonnet-4</option>
-              <option value="claude-3-5-sonnet">claude-3-5-sonnet</option>
-              <option value="gpt-4o">gpt-4o</option>
-              <option value="gpt-4-turbo">gpt-4-turbo</option>
-              <option value="gpt-4">gpt-4</option>
-              <option value="deepseek-chat">deepseek-chat</option>
-              <option value="custom">自定义…</option>
+              <optgroup label="Anthropic / Claude（高价）">
+                <option value="claude-opus-4-7">claude-opus-4-7</option>
+                <option value="claude-opus-4">claude-opus-4</option>
+                <option value="claude-3-opus">claude-3-opus</option>
+                <option value="claude-sonnet-4">claude-sonnet-4</option>
+                <option value="claude-3-7-sonnet">claude-3-7-sonnet</option>
+                <option value="claude-3-5-sonnet">claude-3-5-sonnet</option>
+              </optgroup>
+              <optgroup label="OpenAI / GPT（高价）">
+                <option value="gpt-5">gpt-5</option>
+                <option value="gpt-5-pro">gpt-5-pro</option>
+                <option value="o3">o3</option>
+                <option value="o3-pro">o3-pro</option>
+                <option value="o1">o1</option>
+                <option value="o1-pro">o1-pro</option>
+                <option value="gpt-4o">gpt-4o</option>
+                <option value="gpt-4-turbo">gpt-4-turbo</option>
+                <option value="gpt-4">gpt-4</option>
+              </optgroup>
+              <optgroup label="Google / Gemini（高价）">
+                <option value="gemini-2.5-pro">gemini-2.5-pro</option>
+                <option value="gemini-2.5-pro-deep-think">gemini-2.5-pro-deep-think</option>
+                <option value="gemini-2.0-pro">gemini-2.0-pro</option>
+                <option value="gemini-1.5-pro">gemini-1.5-pro</option>
+                <option value="gemini-ultra">gemini-ultra</option>
+              </optgroup>
+              <optgroup label="其他">
+                <option value="deepseek-chat">deepseek-chat</option>
+                <option value="grok-4">grok-4</option>
+                <option value="grok-3">grok-3</option>
+                <option value="custom">自定义…</option>
+              </optgroup>
             </select>
           </div>
           <div class="form-row">
-            <label>测评强度 <span class="hint">直接影响 token 用量</span></label>
+            <label>扫描深度 <span class="hint">深度越大耗时越长，全部免费</span></label>
             <select id="f-depth">
-              <option value="quick">快速 · 6 步核心 · 约 ¥0.4</option>
-              <option value="standard" selected>标准 · 14 步全审 · 约 ¥1.6</option>
-              <option value="deep">深度 · 14 步 + 行为指纹 ×3 · 约 ¥4.8</option>
+              <option value="quick">快速扫描 · 约 30 秒 · 免费</option>
+              <option value="standard" selected>标准扫描 · 约 2 分钟 · 免费</option>
+              <option value="deep">深度扫描 · 约 5 分钟 · 免费</option>
             </select>
           </div>
         </div>
@@ -669,7 +693,7 @@ footer a:hover { color:var(--ink); }
           <div class="estimate-cell">
             <div class="k">预计输入 token</div>
             <div class="v" id="est-in">—</div>
-            <div class="sub" id="est-in-sub">14 个测试 prompt 总和</div>
+            <div class="sub" id="est-in-sub">所有测试 prompt 的总输入</div>
           </div>
           <div class="estimate-cell">
             <div class="k">预计输出 token</div>
@@ -677,21 +701,21 @@ footer a:hover { color:var(--ink); }
             <div class="sub" id="est-out-sub">受限于 max_tokens=512 / 步</div>
           </div>
           <div class="estimate-cell">
-            <div class="k">预计花费</div>
+            <div class="k">预计耗时</div>
             <div class="v accent" id="est-cost">—</div>
-            <div class="sub" id="est-cost-sub">按官方价折算 · 实际以中转站计费为准</div>
+            <div class="sub" id="est-cost-sub">本平台测评全免费 · 仅消耗你 key 上的少量 token</div>
           </div>
         </div>
 
         <div class="estimate-breakdown" id="est-breakdown">
           <div class="row"><span class="k">目标</span><span class="v" id="est-target">—</span></div>
           <div class="row"><span class="k">模型</span><span class="v" id="est-model">—</span></div>
-          <div class="row"><span class="k">强度</span><span class="v" id="est-depth">—</span></div>
+          <div class="row"><span class="k">扫描深度</span><span class="v" id="est-depth">—</span></div>
           <div class="row"><span class="k">总测试步数</span><span class="v" id="est-steps">—</span></div>
-          <div class="row"><span class="k">单价 · 输入</span><span class="v" id="est-price-in">—</span></div>
-          <div class="row"><span class="k">单价 · 输出</span><span class="v" id="est-price-out">—</span></div>
+          <div class="row"><span class="k">官方参考单价 · 输入</span><span class="v" id="est-price-in">—</span></div>
+          <div class="row"><span class="k">官方参考单价 · 输出</span><span class="v" id="est-price-out">—</span></div>
           <div class="row total"><span class="k">总计 token</span><span class="v" id="est-total-tok">—</span></div>
-          <div class="row total"><span class="k">总计花费</span><span class="v" id="est-total-cost">—</span></div>
+          <div class="row total"><span class="k">预计耗时</span><span class="v" id="est-total-cost">—</span></div>
         </div>
 
         <div class="form-actions">
@@ -1107,21 +1131,41 @@ footer a:hover { color:var(--ink); }
 
   // Pricing (USD per 1M tokens — official list price approximations, used for ESTIMATE only)
   const PRICING = {
-    'claude-opus-4-7':   { in: 15.00, out: 75.00 },
-    'claude-sonnet-4':   { in:  3.00, out: 15.00 },
-    'claude-3-5-sonnet': { in:  3.00, out: 15.00 },
-    'gpt-4o':            { in:  2.50, out: 10.00 },
-    'gpt-4-turbo':       { in: 10.00, out: 30.00 },
-    'gpt-4':             { in: 30.00, out: 60.00 },
-    'deepseek-chat':     { in:  0.27, out:  1.10 },
-    'custom':            { in:  3.00, out: 15.00 },
+    // Anthropic
+    'claude-opus-4-7':       { in: 15.00, out: 75.00 },
+    'claude-opus-4':         { in: 15.00, out: 75.00 },
+    'claude-3-opus':         { in: 15.00, out: 75.00 },
+    'claude-sonnet-4':       { in:  3.00, out: 15.00 },
+    'claude-3-7-sonnet':     { in:  3.00, out: 15.00 },
+    'claude-3-5-sonnet':     { in:  3.00, out: 15.00 },
+    // OpenAI
+    'gpt-5':                 { in:  6.00, out: 24.00 },
+    'gpt-5-pro':             { in: 12.00, out: 48.00 },
+    'o3':                    { in:  2.00, out:  8.00 },
+    'o3-pro':                { in: 20.00, out: 80.00 },
+    'o1':                    { in: 15.00, out: 60.00 },
+    'o1-pro':                { in: 60.00, out:240.00 },
+    'gpt-4o':                { in:  2.50, out: 10.00 },
+    'gpt-4-turbo':           { in: 10.00, out: 30.00 },
+    'gpt-4':                 { in: 30.00, out: 60.00 },
+    // Google
+    'gemini-2.5-pro':            { in:  1.25, out: 10.00 },
+    'gemini-2.5-pro-deep-think': { in:  3.50, out: 21.00 },
+    'gemini-2.0-pro':            { in:  1.25, out:  5.00 },
+    'gemini-1.5-pro':            { in:  3.50, out: 10.50 },
+    'gemini-ultra':              { in:  7.00, out: 21.00 },
+    // Others
+    'deepseek-chat':         { in:  0.27, out:  1.10 },
+    'grok-4':                { in:  3.00, out: 15.00 },
+    'grok-3':                { in:  3.00, out: 15.00 },
+    'custom':                { in:  3.00, out: 15.00 },
   };
   const USD_TO_CNY = 7.2;
 
   const DEPTH = {
-    quick:    { steps: 6,  promptToks: 2400,  outputToks: 1800,  label: '快速 · 6 步核心' },
-    standard: { steps: 14, promptToks: 6800,  outputToks: 5200,  label: '标准 · 14 步全审' },
-    deep:     { steps: 18, promptToks: 18000, outputToks: 14000, label: '深度 · 14+行为指纹×3' },
+    quick:    { steps: 6,  durationMs: 30000,  promptToks: 2400,  outputToks: 1800,  label: '快速扫描 · 6 步核心 · 约 30 秒' },
+    standard: { steps: 14, durationMs: 120000, promptToks: 6800,  outputToks: 5200,  label: '标准扫描 · 14 步全审 · 约 2 分钟' },
+    deep:     { steps: 18, durationMs: 300000, promptToks: 18000, outputToks: 14000, label: '深度扫描 · 14+行为指纹×3 · 约 5 分钟' },
   };
 
   // ── Helpers ──
@@ -1144,6 +1188,13 @@ footer a:hover { color:var(--ink); }
   function fmtCNY(n) {
     if (n < 1) return '¥' + n.toFixed(2);
     return '¥' + n.toFixed(2);
+  }
+  function fmtDur(ms) {
+    if (ms < 60000) return Math.round(ms/1000) + ' 秒';
+    const m = Math.floor(ms / 60000);
+    const s = Math.round((ms % 60000) / 1000);
+    if (s === 0) return m + ' 分钟';
+    return m + ' 分 ' + s + ' 秒';
   }
 
   // ── State ──
@@ -1169,7 +1220,7 @@ footer a:hover { color:var(--ink); }
 
     $('#est-in').textContent  = fmtTok(inTok);
     $('#est-out').textContent = fmtTok(outTok);
-    $('#est-cost').textContent = fmtCNY(costCNY);
+    $('#est-cost').textContent = fmtDur(d.durationMs);
 
     $('#est-target').textContent = state.base;
     $('#est-model').textContent  = state.model;
@@ -1177,11 +1228,12 @@ footer a:hover { color:var(--ink); }
     $('#est-steps').textContent  = d.steps + ' 步 · 每步 1-3 个请求';
     $('#est-price-in').textContent  = '$' + p.in.toFixed(2) + ' / 1M tokens';
     $('#est-price-out').textContent = '$' + p.out.toFixed(2) + ' / 1M tokens';
-    $('#est-total-tok').textContent  = fmtNum(totalTok) + ' tokens (' + fmtNum(inTok) + ' in + ' + fmtNum(outTok) + ' out)';
-    $('#est-total-cost').textContent = fmtCNY(costCNY) + '  (≈ $' + costUSD.toFixed(3) + ')';
+    $('#est-total-tok').textContent  = fmtNum(totalTok) + ' tokens (' + fmtNum(inTok) + ' in + ' + fmtNum(outTok) + ' out · 你的 key )';
+    $('#est-total-cost').textContent = fmtDur(d.durationMs) + '  · 本平台不收费';
 
     // remember for run pane
     state._estTotalTok = totalTok;
+    state._estDurationMs = d.durationMs;
     state._estCostCNY  = costCNY;
 
     setStep(2);
@@ -1280,7 +1332,8 @@ footer a:hover { color:var(--ink); }
       bar.style.width = Math.round(((i+1)/totalSteps)*100) + '%';
 
       i++;
-      const delay = state.depth === 'deep' ? 360 : (state.depth === 'quick' ? 280 : 320);
+      const total = DEPTH[state.depth].durationMs;
+      const delay = Math.max(150, Math.round(total / totalSteps));
       setTimeout(step, delay);
     }
     step();
@@ -1378,7 +1431,7 @@ footer a:hover { color:var(--ink); }
       '维度分:'
     ].concat(r.dims.map(d => '  - ' + d.name + ': ' + d.score)).concat([
       '',
-      '估算花费: ' + ('¥' + state._estCostCNY.toFixed(2)),
+      '扫描耗时: ' + fmtDur(state._estDurationMs || 120000),
       '查看完整方法论: https://truelab.cc/#how'
     ]);
     const text = lines.join('\n');
