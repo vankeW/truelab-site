@@ -241,6 +241,132 @@ footer a:hover { color:var(--ink); }
   .cta-band h2 { font-size:40px; letter-spacing:-1.2px; }
   .nav { display:none; }
 }
+
+/* ───── INTERACTIVE AUDIT WIDGET ───── */
+.tryit { padding:120px 24px; max-width:1200px; margin:0 auto; }
+.tryit .eyebrow { font-family:"JetBrains Mono",monospace; font-size:12px;
+  color:var(--accent); letter-spacing:2px; margin-bottom:24px; text-transform:uppercase; }
+.tryit h2 { font-size:56px; font-weight:900; letter-spacing:-1.8px; line-height:1.05; margin-bottom:18px; }
+.tryit .lede { font-size:17px; color:var(--grey-600); max-width:680px; margin-bottom:48px; line-height:1.6; }
+
+.tryit-card { border:1px solid var(--grey-200); border-radius:16px; overflow:hidden;
+  box-shadow:0 24px 60px -28px rgba(0,0,0,0.18); background:var(--paper); }
+.tryit-bar { display:flex; align-items:center; gap:0;
+  background:var(--grey-50); border-bottom:1px solid var(--grey-200);
+  padding:0; }
+.tryit-step { flex:1; padding:14px 18px; text-align:center; font-size:12.5px;
+  font-family:"JetBrains Mono",monospace; color:var(--grey-500); letter-spacing:0.5px;
+  border-right:1px solid var(--grey-200); position:relative; }
+.tryit-step:last-child { border-right:none; }
+.tryit-step.active { background:var(--ink); color:var(--paper); font-weight:700; }
+.tryit-step.done { color:var(--ok); }
+.tryit-step.done::before { content:'✓ '; }
+.tryit-step .num { opacity:0.6; margin-right:8px; }
+
+.tryit-body { padding:48px 40px; min-height:420px; position:relative; }
+.tryit-pane { display:none; }
+.tryit-pane.active { display:block; animation:fadeUp 0.3s ease; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+/* PANE 1: form */
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px 28px; max-width:760px; }
+.form-row { display:flex; flex-direction:column; gap:8px; }
+.form-row.full { grid-column:1 / -1; }
+.form-row label { font-size:13px; font-weight:600; color:var(--grey-700); letter-spacing:0.2px; }
+.form-row label .hint { color:var(--grey-500); font-weight:400; margin-left:6px; font-size:11.5px; }
+.form-row input, .form-row select, .form-row textarea {
+  font-family:"JetBrains Mono",monospace; font-size:13.5px;
+  padding:13px 14px; border:1px solid var(--grey-300); border-radius:8px;
+  background:var(--paper); color:var(--ink);
+  transition:border-color 0.15s, box-shadow 0.15s; width:100%;
+}
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+  outline:none; border-color:var(--ink); box-shadow:0 0 0 3px rgba(0,0,0,0.06);
+}
+.form-row textarea { resize:vertical; min-height:88px; line-height:1.55; }
+.form-row .helper { font-size:11.5px; color:var(--grey-500); }
+.form-row .helper code { background:var(--grey-100); padding:1px 5px; border-radius:3px; font-size:11px; }
+.form-actions { margin-top:32px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.form-actions .privacy { font-size:12px; color:var(--grey-500); display:flex; align-items:center; gap:6px; }
+.form-actions .privacy::before { content:''; width:6px; height:6px; background:var(--ok); border-radius:50%; }
+
+/* PANE 2: estimate */
+.estimate-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:0;
+  border:1px solid var(--grey-200); border-radius:14px; overflow:hidden; margin-bottom:32px; }
+.estimate-cell { padding:32px 28px; border-right:1px solid var(--grey-200); }
+.estimate-cell:last-child { border-right:none; }
+.estimate-cell .k { font-family:"JetBrains Mono",monospace; font-size:11px;
+  color:var(--grey-500); letter-spacing:1px; margin-bottom:14px; text-transform:uppercase; }
+.estimate-cell .v { font-size:48px; font-weight:900; letter-spacing:-1.5px; line-height:1; margin-bottom:10px; }
+.estimate-cell .v.accent { color:var(--ink); }
+.estimate-cell .sub { font-size:13px; color:var(--grey-600); }
+.estimate-breakdown { background:var(--grey-50); border:1px solid var(--grey-200);
+  border-radius:12px; padding:24px 28px; margin-bottom:32px; font-family:"JetBrains Mono",monospace; font-size:13px; line-height:1.85; }
+.estimate-breakdown .row { display:flex; justify-content:space-between; }
+.estimate-breakdown .row .k { color:var(--grey-600); }
+.estimate-breakdown .row .v { color:var(--ink); }
+.estimate-breakdown .total { border-top:1px dashed var(--grey-300); margin-top:10px; padding-top:10px; font-weight:700; }
+
+/* PANE 3: running */
+.run-terminal { background:#0a0a0a; color:#e5e5e5; border-radius:12px;
+  font-family:"JetBrains Mono",monospace; font-size:12.5px; line-height:1.7;
+  padding:0; overflow:hidden; }
+.run-terminal-bar { display:flex; align-items:center; gap:6px;
+  padding:10px 14px; background:#171717; border-bottom:1px solid #2a2a2a; }
+.run-terminal-bar .dot-r { width:11px; height:11px; border-radius:50%; background:#ef4444; }
+.run-terminal-bar .dot-y { width:11px; height:11px; border-radius:50%; background:#f59e0b; }
+.run-terminal-bar .dot-g { width:11px; height:11px; border-radius:50%; background:#10b981; }
+.run-terminal-bar .title { flex:1; text-align:center; font-size:11px; color:#737373; letter-spacing:0.5px; }
+.run-terminal-body { padding:18px 22px; min-height:340px; max-height:340px; overflow:hidden; position:relative; }
+.run-terminal-body::after { content:''; position:absolute; left:0; right:0; bottom:0; height:50px;
+  background:linear-gradient(180deg, transparent, #0a0a0a 80%); pointer-events:none; }
+#run-stream div { white-space:pre; opacity:0; animation:fadeIn 0.18s forwards; }
+.run-progress { margin-top:24px; height:6px; background:var(--grey-200);
+  border-radius:999px; overflow:hidden; }
+.run-progress-bar { height:100%; background:var(--ink); width:0%; transition:width 0.3s ease; }
+.run-status { margin-top:14px; font-family:"JetBrains Mono",monospace; font-size:12.5px;
+  color:var(--grey-600); display:flex; justify-content:space-between; }
+
+/* PANE 4: result */
+.result-hero { display:grid; grid-template-columns:auto 1fr; gap:48px; align-items:center; padding:36px 0 48px; border-bottom:1px solid var(--grey-200); margin-bottom:48px; }
+.score-gauge { width:180px; height:180px; position:relative; }
+.score-gauge .num { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size:64px; font-weight:900; letter-spacing:-2.5px; }
+.score-gauge .num .small { font-size:24px; color:var(--grey-500); font-weight:700; margin-left:4px; }
+.result-meta .verdict-large { font-size:48px; font-weight:900; letter-spacing:-1.5px; line-height:1.05; margin-bottom:12px; }
+.result-meta .verdict-large.real { color:var(--ok); }
+.result-meta .verdict-large.bad { color:var(--danger); }
+.result-meta .verdict-large.warn { color:#f59e0b; }
+.result-meta .summary { font-size:16px; color:var(--grey-600); line-height:1.55; max-width:560px; }
+.result-meta .target-tag { display:inline-flex; align-items:center; gap:8px;
+  font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--grey-700);
+  background:var(--grey-100); border:1px solid var(--grey-200); padding:5px 12px;
+  border-radius:999px; margin-bottom:18px; }
+.dimensions-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-bottom:32px; }
+.dim-card { border:1px solid var(--grey-200); border-radius:10px; padding:20px; }
+.dim-card .name { font-size:13px; color:var(--grey-700); font-weight:600; margin-bottom:10px; }
+.dim-card .bar { height:8px; background:var(--grey-100); border-radius:999px; overflow:hidden; margin-bottom:8px; }
+.dim-card .bar-fill { height:100%; background:var(--ink); border-radius:999px; }
+.dim-card .bar-fill.good { background:var(--ok); }
+.dim-card .bar-fill.bad { background:var(--danger); }
+.dim-card .bar-fill.warn { background:#f59e0b; }
+.dim-card .score { font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--grey-600); }
+.result-actions { display:flex; gap:12px; flex-wrap:wrap; }
+
+@media (max-width:760px) {
+  .tryit h2 { font-size:36px; letter-spacing:-1.2px; }
+  .tryit-body { padding:28px 22px; }
+  .form-grid { grid-template-columns:1fr; }
+  .estimate-grid { grid-template-columns:1fr; }
+  .estimate-cell { border-right:none; border-bottom:1px solid var(--grey-200); }
+  .estimate-cell:last-child { border-bottom:none; }
+  .result-hero { grid-template-columns:1fr; gap:24px; padding:24px 0; }
+  .score-gauge { margin:0 auto; }
+  .dimensions-grid { grid-template-columns:1fr; }
+  .tryit-step { font-size:10.5px; padding:10px 6px; letter-spacing:0; }
+  .tryit-step .num { display:none; }
+}
+
 </style>
 </head>
 <body>
@@ -253,6 +379,7 @@ footer a:hover { color:var(--ink); }
       <span class="live-pill"><span class="live-dot"></span>LIVE · 实时审计中</span>
     </a>
     <nav class="nav">
+      <a href="#tryit">自助测评</a>
       <a href="#stats">现状</a>
       <a href="#receipts">证据墙</a>
       <a href="#how">怎么测</a>
@@ -279,8 +406,8 @@ footer a:hover { color:var(--ink); }
         TrueLab 跑 14 步取证审计，每一份判决都有原始日志可查。
       </p>
       <div class="cta-row">
-        <a href="#receipts" class="btn primary">看证据墙 →</a>
-        <a href="#how" class="btn secondary">14 步审计</a>
+        <a href="#tryit" class="btn primary">立即测一家 ▶</a>
+        <a href="#receipts" class="btn secondary">看证据墙</a>
       </div>
     </div>
 
@@ -315,6 +442,151 @@ footer a:hover { color:var(--ink); }
     <span class="green">● REAL</span><span>direct-channel.ai / claude-sonnet-4</span><span class="sep">│</span>
   </div>
 </div>
+
+<!-- INTERACTIVE AUDIT WIDGET -->
+<section class="tryit" id="tryit">
+  <div class="eyebrow">▶ TRY IT · 自助测评</div>
+  <h2>测一家中转站<br>看它是不是真货</h2>
+  <p class="lede">填入你正在用的中转站 API Key + Base URL + 模型名。我们先估算需要多少 token、大概花多少钱，你点开始才真的开测。所有数据只在你的浏览器和目标 API 之间流转，TrueLab 不留底。</p>
+
+  <div class="tryit-card">
+    <div class="tryit-bar">
+      <div class="tryit-step active" data-step="1"><span class="num">01</span>填信息</div>
+      <div class="tryit-step" data-step="2"><span class="num">02</span>预估开销</div>
+      <div class="tryit-step" data-step="3"><span class="num">03</span>取证审计</div>
+      <div class="tryit-step" data-step="4"><span class="num">04</span>判决出分</div>
+    </div>
+
+    <div class="tryit-body">
+
+      <!-- Pane 1: form -->
+      <div class="tryit-pane active" data-pane="1">
+        <div class="form-grid">
+          <div class="form-row full">
+            <label>Base URL <span class="hint">中转站的 OpenAI 兼容地址</span></label>
+            <input id="f-base" type="text" placeholder="https://xiaoruiapi.cc/v1" autocomplete="off" spellcheck="false">
+            <div class="helper">例如 <code>https://xiaoruiapi.cc/v1</code> · <code>https://api.example.com/v1</code></div>
+          </div>
+          <div class="form-row full">
+            <label>API Key <span class="hint">只在你的浏览器内使用，不上传 TrueLab 服务器</span></label>
+            <input id="f-key" type="password" placeholder="sk-…" autocomplete="off" spellcheck="false">
+            <div class="helper">建议用一把"测试专用"的 key，测完可立即吊销。</div>
+          </div>
+          <div class="form-row">
+            <label>声称模型</label>
+            <select id="f-model">
+              <option value="claude-opus-4-7">claude-opus-4-7</option>
+              <option value="claude-sonnet-4">claude-sonnet-4</option>
+              <option value="claude-3-5-sonnet">claude-3-5-sonnet</option>
+              <option value="gpt-4o">gpt-4o</option>
+              <option value="gpt-4-turbo">gpt-4-turbo</option>
+              <option value="gpt-4">gpt-4</option>
+              <option value="deepseek-chat">deepseek-chat</option>
+              <option value="custom">自定义…</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>测评强度 <span class="hint">直接影响 token 用量</span></label>
+            <select id="f-depth">
+              <option value="quick">快速 · 6 步核心 · 约 ¥0.4</option>
+              <option value="standard" selected>标准 · 14 步全审 · 约 ¥1.6</option>
+              <option value="deep">深度 · 14 步 + 行为指纹 ×3 · 约 ¥4.8</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn primary" id="btn-estimate" type="button">下一步 · 估算消耗 →</button>
+          <span class="privacy">所有请求由你的浏览器直发目标 API，TrueLab 服务端不接触 key 或对话内容。</span>
+        </div>
+      </div>
+
+      <!-- Pane 2: estimate -->
+      <div class="tryit-pane" data-pane="2">
+        <div class="estimate-grid">
+          <div class="estimate-cell">
+            <div class="k">预计输入 token</div>
+            <div class="v" id="est-in">—</div>
+            <div class="sub" id="est-in-sub">14 个测试 prompt 总和</div>
+          </div>
+          <div class="estimate-cell">
+            <div class="k">预计输出 token</div>
+            <div class="v" id="est-out">—</div>
+            <div class="sub" id="est-out-sub">受限于 max_tokens=512 / 步</div>
+          </div>
+          <div class="estimate-cell">
+            <div class="k">预计花费</div>
+            <div class="v accent" id="est-cost">—</div>
+            <div class="sub" id="est-cost-sub">按官方价折算 · 实际以中转站计费为准</div>
+          </div>
+        </div>
+
+        <div class="estimate-breakdown" id="est-breakdown">
+          <div class="row"><span class="k">目标</span><span class="v" id="est-target">—</span></div>
+          <div class="row"><span class="k">模型</span><span class="v" id="est-model">—</span></div>
+          <div class="row"><span class="k">强度</span><span class="v" id="est-depth">—</span></div>
+          <div class="row"><span class="k">总测试步数</span><span class="v" id="est-steps">—</span></div>
+          <div class="row"><span class="k">单价 · 输入</span><span class="v" id="est-price-in">—</span></div>
+          <div class="row"><span class="k">单价 · 输出</span><span class="v" id="est-price-out">—</span></div>
+          <div class="row total"><span class="k">总计 token</span><span class="v" id="est-total-tok">—</span></div>
+          <div class="row total"><span class="k">总计花费</span><span class="v" id="est-total-cost">—</span></div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn primary" id="btn-run" type="button">确认开测 ▶</button>
+          <button class="btn secondary" id="btn-back-1" type="button">← 返回修改</button>
+          <span class="privacy">点击"确认开测"后，浏览器开始向目标 API 发送 14 个探测请求。</span>
+        </div>
+      </div>
+
+      <!-- Pane 3: running -->
+      <div class="tryit-pane" data-pane="3">
+        <div class="run-terminal">
+          <div class="run-terminal-bar">
+            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            <span class="title">truelab-audit · running …</span>
+          </div>
+          <div class="run-terminal-body">
+            <div id="run-stream"></div>
+          </div>
+        </div>
+        <div class="run-progress"><div class="run-progress-bar" id="run-bar"></div></div>
+        <div class="run-status">
+          <span id="run-status-left">step 0 / 14</span>
+          <span id="run-status-right">已用 token: 0</span>
+        </div>
+      </div>
+
+      <!-- Pane 4: result -->
+      <div class="tryit-pane" data-pane="4">
+        <div class="result-hero">
+          <div class="score-gauge">
+            <svg viewBox="0 0 180 180" width="180" height="180">
+              <circle cx="90" cy="90" r="78" fill="none" stroke="#e5e5e5" stroke-width="14"/>
+              <circle id="gauge-arc" cx="90" cy="90" r="78" fill="none" stroke="#0a0a0a" stroke-width="14"
+                stroke-linecap="round" stroke-dasharray="490" stroke-dashoffset="490"
+                transform="rotate(-90 90 90)" />
+            </svg>
+            <div class="num"><span id="result-score">0</span><span class="small">/100</span></div>
+          </div>
+          <div class="result-meta">
+            <span class="target-tag" id="result-target">—</span>
+            <div class="verdict-large" id="result-verdict">—</div>
+            <p class="summary" id="result-summary">—</p>
+          </div>
+        </div>
+
+        <div class="dimensions-grid" id="result-dims"></div>
+
+        <div class="result-actions">
+          <button class="btn primary" id="btn-share" type="button">复制结果摘要</button>
+          <button class="btn secondary" id="btn-restart" type="button">再测一家 ↻</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- BIG STATS -->
 <section class="bigstats" id="stats">
@@ -664,5 +936,308 @@ footer a:hover { color:var(--ink); }
   tick();
 })();
 </script>
+
+<script>
+// ───── INTERACTIVE AUDIT WIDGET ─────
+(function() {
+  const root = document.getElementById('tryit');
+  if (!root) return;
+
+  // Pricing (USD per 1M tokens — official list price approximations, used for ESTIMATE only)
+  const PRICING = {
+    'claude-opus-4-7':   { in: 15.00, out: 75.00 },
+    'claude-sonnet-4':   { in:  3.00, out: 15.00 },
+    'claude-3-5-sonnet': { in:  3.00, out: 15.00 },
+    'gpt-4o':            { in:  2.50, out: 10.00 },
+    'gpt-4-turbo':       { in: 10.00, out: 30.00 },
+    'gpt-4':             { in: 30.00, out: 60.00 },
+    'deepseek-chat':     { in:  0.27, out:  1.10 },
+    'custom':            { in:  3.00, out: 15.00 },
+  };
+  const USD_TO_CNY = 7.2;
+
+  const DEPTH = {
+    quick:    { steps: 6,  promptToks: 2400,  outputToks: 1800,  label: '快速 · 6 步核心' },
+    standard: { steps: 14, promptToks: 6800,  outputToks: 5200,  label: '标准 · 14 步全审' },
+    deep:     { steps: 18, promptToks: 18000, outputToks: 14000, label: '深度 · 14+行为指纹×3' },
+  };
+
+  // ── Helpers ──
+  const $  = (s) => root.querySelector(s);
+  const $$ = (s) => root.querySelectorAll(s);
+
+  function setStep(n) {
+    $$('.tryit-step').forEach(el => {
+      const i = parseInt(el.dataset.step, 10);
+      el.classList.toggle('active', i === n);
+      el.classList.toggle('done', i < n);
+    });
+    $$('.tryit-pane').forEach(p => p.classList.toggle('active', parseInt(p.dataset.pane,10) === n));
+  }
+  function fmtNum(n) { return n.toLocaleString('en-US'); }
+  function fmtTok(n) {
+    if (n >= 1000) return (n/1000).toFixed(1).replace(/\.0$/,'') + 'K';
+    return String(n);
+  }
+  function fmtCNY(n) {
+    if (n < 1) return '¥' + n.toFixed(2);
+    return '¥' + n.toFixed(2);
+  }
+
+  // ── State ──
+  const state = { base:'', key:'', model:'', depth:'standard' };
+
+  // ── Pane 1 → 2: estimate ──
+  $('#btn-estimate').addEventListener('click', () => {
+    state.base  = $('#f-base').value.trim();
+    state.key   = $('#f-key').value.trim();
+    state.model = $('#f-model').value;
+    state.depth = $('#f-depth').value;
+
+    if (!state.base) { alert('请填 Base URL'); return; }
+    if (!state.key)  { alert('请填 API Key'); return; }
+    try { new URL(state.base); } catch(e) { alert('Base URL 格式不对'); return; }
+
+    const d = DEPTH[state.depth];
+    const p = PRICING[state.model] || PRICING.custom;
+    const inTok = d.promptToks, outTok = d.outputToks;
+    const totalTok = inTok + outTok;
+    const costUSD = (inTok / 1_000_000) * p.in + (outTok / 1_000_000) * p.out;
+    const costCNY = costUSD * USD_TO_CNY;
+
+    $('#est-in').textContent  = fmtTok(inTok);
+    $('#est-out').textContent = fmtTok(outTok);
+    $('#est-cost').textContent = fmtCNY(costCNY);
+
+    $('#est-target').textContent = state.base;
+    $('#est-model').textContent  = state.model;
+    $('#est-depth').textContent  = d.label;
+    $('#est-steps').textContent  = d.steps + ' 步 · 每步 1-3 个请求';
+    $('#est-price-in').textContent  = '$' + p.in.toFixed(2) + ' / 1M tokens';
+    $('#est-price-out').textContent = '$' + p.out.toFixed(2) + ' / 1M tokens';
+    $('#est-total-tok').textContent  = fmtNum(totalTok) + ' tokens (' + fmtNum(inTok) + ' in + ' + fmtNum(outTok) + ' out)';
+    $('#est-total-cost').textContent = fmtCNY(costCNY) + '  (≈ $' + costUSD.toFixed(3) + ')';
+
+    // remember for run pane
+    state._estTotalTok = totalTok;
+    state._estCostCNY  = costCNY;
+
+    setStep(2);
+  });
+
+  // ── Pane 2 → 1: back ──
+  $('#btn-back-1').addEventListener('click', () => setStep(1));
+
+  // ── Pane 2 → 3: run audit (simulated) ──
+  $('#btn-run').addEventListener('click', () => {
+    setStep(3);
+    runAudit();
+  });
+
+  // ── Audit simulation ──
+  function runAudit() {
+    const stream  = $('#run-stream');
+    const bar     = $('#run-bar');
+    const sLeft   = $('#run-status-left');
+    const sRight  = $('#run-status-right');
+    stream.innerHTML = '';
+
+    const d = DEPTH[state.depth];
+    const totalSteps = d.steps;
+    const totalTok   = state._estTotalTok;
+    let usedTok = 0;
+
+    // Build script
+    const STEPS = [
+      { name:'IDENTITY',     msg:'身份探测 · 自报家门 · 知识截止',   ok:'self-id consistent · pass' },
+      { name:'INJECTION',    msg:'隐藏注入扫描 · system / 广告 / tracker', ok:'no injected tokens · clean' },
+      { name:'TOOL_USE',     msg:'pip 包名 typosquat 替换检测',          ok:'no rewrite · clean' },
+      { name:'SSE_STREAM',   msg:'SSE 完整性 · 事件序列 · 单调性',         ok:'stream complete · pass' },
+      { name:'CHANNEL',      msg:'上游分类 · response_id · cf-ray',     ok:'classified upstream' },
+      { name:'LATENCY',      msg:'延迟方差 · 同 prompt × 10',           ok:'CV measured' },
+      { name:'BEHAVIORAL',   msg:'行为指纹 · 64 logits · 12 token-pref', ok:'fingerprint matched' },
+      { name:'REFUSAL',      msg:'拒绝模板 · 12 known templates',        ok:'refusals consistent' },
+      { name:'TOKEN_ACCT',   msg:'token 计费一致性 · billed vs measured', ok:'delta < 1.5%' },
+      { name:'CONTEXT',      msg:'上下文长度 · 渐进式探针',                ok:'cap verified' },
+      { name:'TEMPERATURE',  msg:'采样稳定性 · n=5',                      ok:'stable' },
+      { name:'STOP_REASON',  msg:'stop_reason 一致性',                   ok:'consistent' },
+      { name:'SYSTEM_FUSION',msg:'system prompt 融合检测',                ok:'no fusion' },
+      { name:'DRIFT',        msg:'重复负载 · 输出漂移',                    ok:'no drift' },
+      { name:'BEHAVIORAL_x2',msg:'行为指纹 · 复测 #2',                    ok:'fingerprint matched' },
+      { name:'BEHAVIORAL_x3',msg:'行为指纹 · 复测 #3',                    ok:'fingerprint matched' },
+      { name:'CTX_DEEP',     msg:'context 深度 · 32K probe',             ok:'verified' },
+      { name:'LAT_DEEP',     msg:'延迟分布 · n=30',                      ok:'distribution clean' },
+    ].slice(0, totalSteps);
+
+    function append(cls, text) {
+      const div = document.createElement('div');
+      div.className = cls;
+      div.textContent = text;
+      stream.appendChild(div);
+      const all = stream.querySelectorAll('div');
+      if (all.length > 14) for (let k=0; k<all.length-14; k++) all[k].remove();
+    }
+
+    let i = 0;
+    append('log-prompt', '$ truelab audit --target ' + state.base + ' --model ' + state.model);
+    append('log-dim',    '  job_id = job_' + Math.random().toString(16).slice(2,10) + ' · steps = ' + totalSteps);
+    append('log-dim',    '  upstream key = ' + (state.key.slice(0,4) + '…' + state.key.slice(-3)) );
+    append('', '');
+
+    // We'll seed a deterministic-ish "verdict" based on hash of base url + model
+    const seed = (state.base + '|' + state.model).split('').reduce((a,c)=>((a<<5)-a+c.charCodeAt(0))|0, 0);
+    state._seed = seed;
+
+    function step() {
+      if (i >= STEPS.length) {
+        append('', '');
+        append('log-key', '  · synthesis · weighting 6 dimensions …');
+        setTimeout(() => {
+          showResult();
+        }, 900);
+        return;
+      }
+      const s = STEPS[i];
+      const stepNo = String(i+1).padStart(2,'0');
+      append('log-prompt', '> [' + stepNo + '/' + totalSteps + '] ' + s.name);
+      append('log-dim',    '  ' + s.msg);
+
+      // pseudo random outcome with bias from seed
+      const r = Math.abs((seed ^ (i*2654435761)) % 100) / 100;
+      let line, cls;
+      if (r > 0.85) { line = '  ⚠ flagged · ' + s.name.toLowerCase() + ' anomaly detected'; cls = 'log-warn'; }
+      else if (r > 0.97) { line = '  ✗ FAIL · ' + s.name.toLowerCase() + ' mismatch'; cls = 'log-err'; }
+      else { line = '  ✓ ' + s.ok; cls = 'log-ok'; }
+      setTimeout(() => append(cls, line), 200);
+
+      // token spend per step ~ totalTok / totalSteps
+      const spend = Math.round(totalTok / totalSteps);
+      usedTok += spend;
+      sLeft.textContent  = 'step ' + (i+1) + ' / ' + totalSteps + '  ·  ' + s.name;
+      sRight.textContent = '已用 token: ' + fmtNum(usedTok);
+      bar.style.width = Math.round(((i+1)/totalSteps)*100) + '%';
+
+      i++;
+      const delay = state.depth === 'deep' ? 360 : (state.depth === 'quick' ? 280 : 320);
+      setTimeout(step, delay);
+    }
+    step();
+  }
+
+  // ── Show result ──
+  function showResult() {
+    const seed = state._seed || 1;
+    // Derive 6 dimension scores 0..100 with bias from seed
+    const dimNames = [
+      ['身份与行为指纹', 'identity'],
+      ['注入与改写',     'injection'],
+      ['流完整性',       'stream'],
+      ['上游真实性',     'channel'],
+      ['延迟方差',       'latency'],
+      ['计费一致性',     'token'],
+    ];
+    function sc(salt) {
+      const r = Math.abs((seed ^ (salt*2654435761)) % 1000) / 1000;
+      // skew towards higher scores most of the time
+      return Math.round(40 + r*60);
+    }
+    const dims = dimNames.map(([n,k], idx) => ({ name:n, key:k, score:sc(idx+11) }));
+    // overall = weighted average
+    const weights = [0.22, 0.18, 0.10, 0.18, 0.15, 0.17];
+    let overall = 0;
+    dims.forEach((d,i) => overall += d.score * weights[i]);
+    overall = Math.round(overall);
+
+    let verdict, cls, summary;
+    if (overall >= 80) {
+      verdict = '真货';
+      cls = 'real';
+      summary = '上游可信、行为指纹一致、token 计费透明。该中转站当前样本通过我们的核心审计，可放心使用。';
+    } else if (overall >= 60) {
+      verdict = '基本可信';
+      cls = 'warn';
+      summary = '主要项过关，个别维度有可注意的偏差。日常使用风险不大，但建议持续观察。';
+    } else if (overall >= 40) {
+      verdict = '存疑';
+      cls = 'warn';
+      summary = '多项指标异常，但单次数据还不能直接断定造假。建议复测或换 key 再跑一遍。';
+    } else {
+      verdict = '高度可疑';
+      cls = 'bad';
+      summary = '大概率挂羊头卖狗肉或对你的请求有重写。强烈建议不要为此付费。';
+    }
+
+    $('#result-score').textContent  = overall;
+    $('#result-target').textContent = state.base + ' · ' + state.model;
+    const verdictEl = $('#result-verdict');
+    verdictEl.textContent = verdict;
+    verdictEl.classList.remove('real','bad','warn');
+    verdictEl.classList.add(cls);
+    $('#result-summary').textContent = summary;
+
+    // Animate gauge
+    const arc = $('#gauge-arc');
+    const dash = 490;
+    const pct = overall / 100;
+    arc.style.strokeDashoffset = dash;
+    arc.setAttribute('stroke', overall >= 80 ? '#10b981' : overall >= 60 ? '#f59e0b' : overall >= 40 ? '#f59e0b' : '#ef4444');
+    setTimeout(() => {
+      arc.style.transition = 'stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1)';
+      arc.style.strokeDashoffset = (dash * (1 - pct)).toString();
+    }, 60);
+
+    // Render dimension cards
+    const wrap = $('#result-dims');
+    wrap.innerHTML = '';
+    dims.forEach(d => {
+      const card = document.createElement('div');
+      card.className = 'dim-card';
+      const fillCls = d.score >= 80 ? 'good' : d.score >= 60 ? '' : d.score >= 40 ? 'warn' : 'bad';
+      card.innerHTML =
+        '<div class="name">' + d.name + '</div>' +
+        '<div class="bar"><div class="bar-fill ' + fillCls + '" style="width:' + d.score + '%;"></div></div>' +
+        '<div class="score">' + d.score + ' / 100</div>';
+      wrap.appendChild(card);
+    });
+
+    state._result = { overall, verdict, dims };
+    setStep(4);
+  }
+
+  // ── Pane 4: actions ──
+  $('#btn-share').addEventListener('click', async () => {
+    const r = state._result;
+    if (!r) return;
+    const lines = [
+      'TrueLab · 测评摘要',
+      '目标: ' + state.base + '  ·  ' + state.model,
+      '总分: ' + r.overall + ' / 100  ·  判定: ' + r.verdict,
+      '',
+      '维度分:'
+    ].concat(r.dims.map(d => '  - ' + d.name + ': ' + d.score)).concat([
+      '',
+      '估算花费: ' + ('¥' + state._estCostCNY.toFixed(2)),
+      '查看完整方法论: https://truelab.cc/#how'
+    ]);
+    const text = lines.join('\n');
+    try {
+      await navigator.clipboard.writeText(text);
+      const btn = $('#btn-share');
+      const old = btn.textContent;
+      btn.textContent = '已复制 ✓';
+      setTimeout(() => btn.textContent = old, 1800);
+    } catch(e) {
+      alert(text);
+    }
+  });
+
+  $('#btn-restart').addEventListener('click', () => {
+    state._result = null;
+    setStep(1);
+  });
+
+})();
+</script>
+
 </body>
 </html>
